@@ -9,15 +9,21 @@ AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
 void assignValues(uint8_t *data , size_t len){
+//  Serial.print("w " );
+  Serial.println(xPortGetCoreID());
   char command = 'a';
-  int value = 0;  
   uint8_t i = 0;
   while(i<len){
     command = (char) data[i];
     if(isAlpha(command)){
       i++;
       switch(command) {
-        case 's' : steer = atoi((const char *) &data[i]);
+        case 's' :if((char)data[i] == '+'){
+                    steerFlg = true; 
+                  }else {
+                    steerFlg = false;
+                    steer = atoi((const char *) &data[i]);
+                  }
                   break;
         case 't' : throttle = (char) data[i] == '1' ? true : false;
                   break;

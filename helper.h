@@ -12,6 +12,7 @@ extern int steer;
 extern boolean throttle;
 extern boolean breaks;
 extern char ledMode;
+extern boolean steerFlg;
 
 void wifiInit();
 void cleanupClients();

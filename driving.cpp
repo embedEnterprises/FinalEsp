@@ -8,6 +8,7 @@ boolean throttle = false;
 boolean breaks = false;
 boolean directions = true; // true means forward
 int pwm = 0;
+boolean steerFlg = false;
 
 const int freq = 5000;
 const int resolution = 8;
@@ -33,9 +34,22 @@ void updateSteer() {
 }
 
 void updatePose() {
+//  Serial.printf("steer- %d , angle- %d , flg- %d \n" , steer , steerAngle , steerFlg);
+  if(steerFlg){
+    if((millis() - prevMil) > 10){
+      if(steer > 0){
+        steer =steer < 7 ? 0 : steer - 7;
+      } else if(steer < 0){
+        steer = steer > -7 ? 0 : steer + 7;
+      } else {
+        steerFlg = false;
+      }
+      prevMil = millis();
+    }
+  }
   updateSteer();
   myservo.write(steerAngle);
-  delay(20);
+//  delay(20);
 }
 
 void throttleTaskCode(void * parameter) {

@@ -3,11 +3,13 @@
 #include <Arduino.h>
 #include <ESP32Servo.h>
 #include <math.h>
+#include "helper.h"
 
 #define servoPin 17
-#define leftAngle 80
-#define rightAngle 180
-#define maxSteering 360
+#define leftAngle 65
+#define rightAngle 165
+#define centerAngle 115
+#define maxSteering 180
 
 #define in1 18
 #define in2 19
