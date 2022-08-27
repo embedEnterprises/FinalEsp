@@ -1,7 +1,7 @@
 #include "helper.h"
 
-const char* ssid = "Room_303";
-const char* password = "room303@vishal";
+const char* ssid = "pranesh";
+const char* password = "07110711";
 
 
 // Create AsyncWebServer object on port 80
@@ -10,7 +10,7 @@ AsyncWebSocket ws("/ws");
 
 void assignValues(uint8_t *data , size_t len){
 //  Serial.print("w " );
-  Serial.println(xPortGetCoreID());
+//  Serial.println(xPortGetCoreID());
   char command = 'a';
   uint8_t i = 0;
   while(i<len){

@@ -15,6 +15,7 @@ void setup() {
 void loop() {
   cleanupClients();
 //  Serial.printf("pwm- %d  , steer - %d \n",pwm,steerAngle); //breaks - %d , steer - %d \n"  , pwm , throttle , breaks , steerAngle);
+//Serial.println(xPortGetFreeHeapSize());
 core = xPortGetCoreID();
 if(core != prevCore){
   
