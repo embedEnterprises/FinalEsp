@@ -1,8 +1,15 @@
 #include "helper.h"
 
-const char* ssid = "pranesh";
-const char* password = "07110711";
+const char* ssid = "Onkar";
+const char* password = "Onkar@link";
 
+// Set your Static IP address
+IPAddress local_IP(192, 168, 1, 184);
+// Set your Gateway IP address
+IPAddress gateway(192, 168, 1, 1);
+IPAddress subnet(255, 255, 0, 0);
+IPAddress primaryDNS(8, 8, 8, 8);   //optional
+IPAddress secondaryDNS(8, 8, 4, 4); //optional
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -72,6 +79,10 @@ void initWebSocket() {
 }
 
 void wifiInit(){
+  // Configures static IP address
+  if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
+    Serial.println("STA Failed to configure");
+  } 
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
